@@ -1,26 +1,57 @@
-def verificar_triangulo(X, Y, Z):
-    # Verifica se os valores podem formar um triângulo
-    if X < Y + Z and Y < X + Z and Z < X + Y:
-        if X == Y == Z:
-            print("Triângulo Equilátero: os 3 lados são iguais.")
-        elif X == Y or Y == Z or X == Z:
-            print("Triângulo Isósceles: pelo menos 2 lados são iguais.")
-        else:
-            print("Triângulo Escaleno: os 3 lados são diferentes.")
-    else:
-        print("Os valores fornecidos não podem formar um triângulo.")
+using System;
 
-def main():
-    while True:
-        try:
-            X = float(input("Digite o comprimento do lado X (ou um valor negativo para encerrar): "))
-            if X < 0:
-                break
-            Y = float(input("Digite o comprimento do lado Y: "))
-            Z = float(input("Digite o comprimento do lado Z: "))
-            verificar_triangulo(X, Y, Z)
-        except ValueError:
-            print("Entrada inválida. Por favor, digite números válidos.")
+class Program
+{
+    // Procedimento para verificar o tipo de triângulo
+    static void VerificarTriangulo(double X, double Y, double Z)
+    {
+        if (X < Y + Z && Y < X + Z && Z < X + Y)
+        {
+            if (X == Y && Y == Z)
+            {
+                Console.WriteLine("Triângulo Equilátero: os 3 lados são iguais.");
+            }
+            else if (X == Y || Y == Z || X == Z)
+            {
+                Console.WriteLine("Triângulo Isósceles: pelo menos 2 lados são iguais.");
+            }
+            else
+            {
+                Console.WriteLine("Triângulo Escaleno: os 3 lados são diferentes.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Os valores fornecidos não podem formar um triângulo.");
+        }
+    }
 
-if __name__ == "__main__":
-    main()
+    // Função principal
+    static void Main()
+    {
+        while (true)
+        {
+            try
+            {
+                Console.Write("Digite o comprimento do lado X (ou um valor negativo para encerrar): ");
+                double X = double.Parse(Console.ReadLine());
+                if (X < 0)
+                {
+                    break;
+                }
+
+                Console.Write("Digite o comprimento do lado Y: ");
+                double Y = double.Parse(Console.ReadLine());
+
+                Console.Write("Digite o comprimento do lado Z: ");
+                double Z = double.Parse(Console.ReadLine());
+
+                VerificarTriangulo(X, Y, Z);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Entrada inválida. Por favor, digite números válidos.");
+            }
+        }
+    }
+}
