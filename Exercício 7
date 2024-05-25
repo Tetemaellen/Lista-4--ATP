@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    // Procedimento para identificar e exibir o conceito do aluno
+    static void ExibirConceito(double media)
+    {
+        char conceito;
+
+        if (media >= 90)
+        {
+            conceito = 'A';
+        }
+        else if (media >= 80)
+        {
+            conceito = 'B';
+        }
+        else if (media >= 70)
+        {
+            conceito = 'C';
+        }
+        else if (media >= 60)
+        {
+            conceito = 'D';
+        }
+        else if (media >= 40)
+        {
+            conceito = 'E';
+        }
+        else
+        {
+            conceito = 'F';
+        }
+
+        Console.WriteLine($"Conceito: {conceito}");
+    }
+
+    // Função principal
+    static void Main()
+    {
+        Console.Write("Digite o número de alunos (N): ");
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            try
+            {
+                Console.Write($"Digite a média do {i + 1}º aluno: ");
+                double media = double.Parse(Console.ReadLine());
+
+                ExibirConceito(media);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Entrada inválida. Por favor, digite um número válido.");
+            }
+        }
+    }
+}
