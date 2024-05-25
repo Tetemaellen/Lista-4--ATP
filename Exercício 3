@@ -1,28 +1,39 @@
-def coletar_dados():
-    salarios = []
-    numero_de_filhos = []
-    
-    while True:
-        try:
-            salario = float(input("Digite o salário (ou um valor negativo para encerrar): "))
-            if salario < 0:
-                break
-            filhos = int(input("Digite o número de filhos: "))
-            
-            salarios.append(salario)
-            numero_de_filhos.append(filhos)
-        
-        except ValueError:
-            print("Entrada inválida. Por favor, digite números válidos.")
-    
-    if len(salarios) > 0:
-        media_salario = sum(salarios) / len(salarios)
-        print(f"Média de salário da população: R$ {media_salario:.2f}")
-    else:
-        print("Nenhum dado foi inserido.")
+using System;
 
-def main():
-    coletar_dados()
+class Program
+{
+    // Procedimento para ordenar e exibir três valores inteiros
+    static void ExibirEmOrdemCrescente(int a, int b, int c)
+    {
+        // Ordena os valores
+        int[] valores = { a, b, c };
+        Array.Sort(valores);
 
-if __name__ == "__main__":
-    main()
+        // Exibe os valores ordenados
+        Console.WriteLine($"{valores[0]}, {valores[1]}, {valores[2]}");
+    }
+
+    // Função principal
+    static void Main()
+    {
+        // Lê o número de conjuntos de valores
+        Console.Write("Digite o número de conjuntos de valores (N): ");
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            // Lê os três valores inteiros
+            Console.Write($"Digite o primeiro valor do conjunto {i + 1}: ");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.Write($"Digite o segundo valor do conjunto {i + 1}: ");
+            int b = int.Parse(Console.ReadLine());
+
+            Console.Write($"Digite o terceiro valor do conjunto {i + 1}: ");
+            int c = int.Parse(Console.ReadLine());
+
+            // Chama o procedimento para exibir os valores em ordem crescente
+            ExibirEmOrdemCrescente(a, b, c);
+        }
+    }
+}
