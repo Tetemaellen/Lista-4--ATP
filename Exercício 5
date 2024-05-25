@@ -1,0 +1,29 @@
+using System;
+
+class Program
+{
+    // Função para calcular o MDC usando o algoritmo de Euclides
+    static int CalcularMDC(int a, int b)
+    {
+        while (b != 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    // Função principal
+    static void Main()
+    {
+        Console.Write("Digite o primeiro número: ");
+        int a = int.Parse(Console.ReadLine());
+        
+        Console.Write("Digite o segundo número: ");
+        int b = int.Parse(Console.ReadLine());
+        
+        int mdc = CalcularMDC(a, b);
+        Console.WriteLine($"O Máximo Divisor Comum de {a} e {b} é {mdc}");
+    }
+}
