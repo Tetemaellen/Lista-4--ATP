@@ -1,0 +1,28 @@
+def coletar_dados():
+    salarios = []
+    numero_de_filhos = []
+    
+    while True:
+        try:
+            salario = float(input("Digite o salário (ou um valor negativo para encerrar): "))
+            if salario < 0:
+                break
+            filhos = int(input("Digite o número de filhos: "))
+            
+            salarios.append(salario)
+            numero_de_filhos.append(filhos)
+        
+        except ValueError:
+            print("Entrada inválida. Por favor, digite números válidos.")
+    
+    if len(salarios) > 0:
+        media_salario = sum(salarios) / len(salarios)
+        print(f"Média de salário da população: R$ {media_salario:.2f}")
+    else:
+        print("Nenhum dado foi inserido.")
+
+def main():
+    coletar_dados()
+
+if __name__ == "__main__":
+    main()
