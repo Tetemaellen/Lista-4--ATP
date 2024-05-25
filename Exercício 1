@@ -1,21 +1,56 @@
-def calcular_media(nota1, nota2, nota3, letra):
-    if letra == 'A':
-        media = (nota1 + nota2 + nota3) / 3
-        print(f"Média Aritmética: {media:.2f}")
-    elif letra == 'P':
-        media = (nota1 * 5 + nota2 * 3 + nota3 * 2) / 10
-        print(f"Média Ponderada: {media:.2f}")
-    else:
-        print("Letra inválida. Use 'A' para média aritmética ou 'P' para média ponderada.")
+using System;
 
-def main():
-    N = int(input("Digite o número de alunos: "))
-    for _ in range(N):
-        nota1 = float(input("Digite a primeira nota: "))
-        nota2 = float(input("Digite a segunda nota: "))
-        nota3 = float(input("Digite a terceira nota: "))
-        letra = input("Digite 'A' para média aritmética ou 'P' para média ponderada: ").upper()
-        calcular_media(nota1, nota2, nota3, letra)
+class Program
+{
+    // Procedimento para calcular e exibir a média aritmética ou ponderada
+    static void CalcularMedia(double nota1, double nota2, double nota3, char tipoMedia)
+    {
+        if (tipoMedia == 'A' || tipoMedia == 'a')
+        {
+            double mediaAritmetica = (nota1 + nota2 + nota3) / 3;
+            Console.WriteLine($"Média Aritmética: {mediaAritmetica:F2}");
+        }
+        else if (tipoMedia == 'P' || tipoMedia == 'p')
+        {
+            double mediaPonderada = (nota1 * 5 + nota2 * 3 + nota3 * 2) / 10;
+            Console.WriteLine($"Média Ponderada: {mediaPonderada:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Tipo de média inválido.");
+        }
+    }
 
-if __name__ == "__main__":
-    main()
+    // Função principal
+    static void Main()
+    {
+        Console.Write("Digite o número de alunos (N): ");
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < N; i++)
+        {
+            try
+            {
+                Console.WriteLine($"Aluno {i + 1}:");
+
+                Console.Write("Digite a primeira nota: ");
+                double nota1 = double.Parse(Console.ReadLine());
+
+                Console.Write("Digite a segunda nota: ");
+                double nota2 = double.Parse(Console.ReadLine());
+
+                Console.Write("Digite a terceira nota: ");
+                double nota3 = double.Parse(Console.ReadLine());
+
+                Console.Write("Digite o tipo de média (A para aritmética, P para ponderada): ");
+                char tipoMedia = char.Parse(Console.ReadLine());
+
+                CalcularMedia(nota1, nota2, nota3, tipoMedia);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Entrada inválida. Por favor, digite números válidos.");
+            }
+        }
+    }
+}
