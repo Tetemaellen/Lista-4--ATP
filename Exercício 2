@@ -1,28 +1,52 @@
-def coletar_dados():
-    salarios = []
-    numero_de_filhos = []
-    
-    while True:
-        try:
-            salario = float(input("Digite o salário (ou um valor negativo para encerrar): "))
-            if salario < 0:
-                break
-            filhos = int(input("Digite o número de filhos: "))
-            
-            salarios.append(salario)
-            numero_de_filhos.append(filhos)
-        
-        except ValueError:
-            print("Entrada inválida. Por favor, digite números válidos.")
-    
-    if len(salarios) > 0:
-        media_salario = sum(salarios) / len(salarios)
-        print(f"Média de salário da população: R$ {media_salario:.2f}")
-    else:
-        print("Nenhum dado foi inserido.")
+using System;
 
-def main():
-    coletar_dados()
+class Program
+{
+    // Procedimento para coletar dados e calcular a média de salário
+    static void ColetarDados()
+    {
+        double somaSalarios = 0;
+        int contadorPessoas = 0;
 
-if __name__ == "__main__":
-    main()
+        while (true)
+        {
+            try
+            {
+                Console.Write("Digite o salário (ou um valor negativo para encerrar): ");
+                double salario = double.Parse(Console.ReadLine());
+
+                if (salario < 0)
+                {
+                    break;
+                }
+
+                Console.Write("Digite o número de filhos: ");
+                int filhos = int.Parse(Console.ReadLine());
+
+                // Soma os salários e incrementa o contador de pessoas
+                somaSalarios += salario;
+                contadorPessoas++;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Entrada inválida. Por favor, digite números válidos.");
+            }
+        }
+
+        if (contadorPessoas > 0)
+        {
+            double mediaSalario = somaSalarios / contadorPessoas;
+            Console.WriteLine($"Média de salário da população: R$ {mediaSalario:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Nenhum dado foi inserido.");
+        }
+    }
+
+    // Função principal
+    static void Main()
+    {
+        ColetarDados();
+    }
+}
